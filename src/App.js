@@ -47,7 +47,7 @@ function App() {
       </header>
       <Routes>
         <Route
-          path="/"
+          path="/llm_front"
           element={<ConfigEditor />}
         />
         <Route
