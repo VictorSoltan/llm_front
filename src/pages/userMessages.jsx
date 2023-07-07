@@ -103,7 +103,7 @@ export default function UserMessages() {
                         alignItems: 'flex-start',
                         width: '100%',
                         maxWidth: '100%',
-                        overflowX: 'scroll',
+                        overflow: 'scroll',
                         margin: '0 auto',
                     }}>
 
@@ -113,7 +113,9 @@ export default function UserMessages() {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'flex-start',
-                                margin: '20px 20px 20px 0'
+                                margin: '20px 20px 20px 0',
+                                minWidth: '240px',
+                                textAlign: 'left'
                             }}>
                                 <span style={{margin: '10px 0'}}>User name: {user.name}</span>
                                 <span style={{margin: '10px 0'}}>User username: @{user.username}</span>

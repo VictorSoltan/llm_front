@@ -26,7 +26,6 @@ export default function ConfigEditor() {
 
             privateMessagesGptReminder: e.target.privatemessagesgptreminder.value,
             afterConversetionPassedToAdmins: e.target.afterconversetionpassedtoadmins.value,
-            checkIfUserPassedInfoToAdmins: e.target.checkifuserpassedinfotoadmins.value,
             conversationSummery: e.target.conversationsummery.value,
             currencyValues: e.target.currencyvalues.value,
 
@@ -101,7 +100,6 @@ export default function ConfigEditor() {
                     {promptDisplay('Check Public Message:', "checkpublicmessage", prompts.botPrompts.checkpublicmessage, "botPrompts")}
                     {promptDisplay('Private Message GPT Reminder:', "privatemessagesgptreminder", prompts.botPrompts.privatemessagesgptreminder, "botPrompts")}
                     {promptDisplay('Private Message GPT Reminder one hour after sending message:', "afterconversetionpassedtoadmins", prompts.botPrompts.afterconversetionpassedtoadmins, "botPrompts")}
-                    {promptDisplay('Check If User Passed Info To Admins:', "checkifuserpassedinfotoadmins", prompts.botPrompts.checkifuserpassedinfotoadmins, "botPrompts")}
                     {promptDisplay('Conversation Summery:', "conversationsummery", prompts.botPrompts.conversationsummery, "botPrompts")}
                     {promptDisplay('Amounts to compare with user requests(must be separated with comma and space):', "currencyvalues", prompts.botPrompts.currencyvalues, "botPrompts")}
 
