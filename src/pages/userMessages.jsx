@@ -36,7 +36,7 @@ export default function UserMessages() {
       );
     }
 
-    useEffect(() => {
+    function getUsers() {
         axios.get(process.env.REACT_APP_BACK_ADDRESS + '/get_users_id')
         .then(res => {
             console.log(JSON.parse(res.data))
@@ -45,6 +45,10 @@ export default function UserMessages() {
         .catch(err => {
             console.log(err)
         })
+    }
+
+    useEffect(() => {
+        getUsers()
     }, [])
 
     const handleClick = (user_id) => {
@@ -53,6 +57,17 @@ export default function UserMessages() {
         .then(res => {
             console.log(JSON.parse(res.data))
             setMessages(JSON.parse(res.data))
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    const deleteUser = (user_id) => {
+        axios.post(process.env.REACT_APP_BACK_ADDRESS + `/delete_user_id${user_id}`)
+        .then(res => {
+            console.log(res)
+            getUsers()
         })
         .catch(err => {
             console.log(err)
@@ -83,7 +98,7 @@ export default function UserMessages() {
     
     return (
         <div
-        style={{display: 'flex', flexDirection: 'column', minHeight: '92vh'}}>
+            style={{display: 'flex', flexDirection: 'column', minHeight: '92vh'}}>
             <header style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -129,6 +144,16 @@ export default function UserMessages() {
                                     borderWidth: '0px',
                                     backgroundColor: '#4CAF50',
                                     color: 'white'}} onClick={() => handleClick(user.user_id) }>Check this user conversation</button>
+                                <button style={{       
+                                    cursor: 'pointer',                     
+                                    fontSize: '13px',
+                                    marginTop: '6px',
+                                    padding: '6px',
+                                    fontWeight: 'bold',
+                                    borderRadius: '10px',
+                                    borderWidth: '0px',
+                                    backgroundColor: '#f44336',
+                                    color: 'white'}} onClick={() => deleteUser(user.user_id) }>Delete user</button>                                    
                             </div>
                         )
                     })}

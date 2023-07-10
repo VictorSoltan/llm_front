@@ -28,7 +28,7 @@ export default function ConfigEditor() {
             afterConversetionPassedToAdmins: e.target.afterconversetionpassedtoadmins.value,
             conversationSummery: e.target.conversationsummery.value,
             currencyValues: e.target.currencyvalues.value,
-
+            currencyPairs: e.target.currencypairs.value,
             greetingsEn: e.target.greetingsen.value,
             greetingsRu: e.target.greetingsru.value,
             messageAfterItWasPassedEn: e.target.passedrequestmessageen.value,
@@ -102,6 +102,7 @@ export default function ConfigEditor() {
                     {promptDisplay('Private Message GPT Reminder one hour after sending message:', "afterconversetionpassedtoadmins", prompts.botPrompts.afterconversetionpassedtoadmins, "botPrompts")}
                     {promptDisplay('Conversation Summery:', "conversationsummery", prompts.botPrompts.conversationsummery, "botPrompts")}
                     {promptDisplay('Amounts to compare with user requests(must be separated with comma and space):', "currencyvalues", prompts.botPrompts.currencyvalues, "botPrompts")}
+                    {promptDisplay('currency Pairs:', "currencypairs", prompts.botPrompts.currencypairs, "botPrompts")}
 
                     <h2>Languages</h2>
 
