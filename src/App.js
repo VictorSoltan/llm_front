@@ -1,6 +1,7 @@
 import './App.css';
 // pages 
 import ConfigEditor from './pages/configEditor';
+import FaqEditor from './pages/faqEditor';
 import FileUploader from './pages/fileUploader';
 import UserMessages from './pages/userMessages';
 
@@ -13,6 +14,7 @@ import { Routes, Route, Link } from "react-router-dom";
 function App() {
   const links = [
     { value: "Config", link: "" },
+    { value: "FAQ", link: "/faq_editor" },
     { value: "Messages", link: "/user_messages" },
     { value: "Upload sessions", link: "/upload_sessions" },
   ]
@@ -49,6 +51,10 @@ function App() {
         <Route
           path="/"
           element={<ConfigEditor />}
+        />
+        <Route
+          path="/faq_editor"
+          element={<FaqEditor />}
         />
         <Route
           path="/user_messages"
