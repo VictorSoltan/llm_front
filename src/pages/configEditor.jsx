@@ -112,7 +112,7 @@ export default function ConfigEditor() {
                     {promptDisplay('Passed Request Message Ru:', "passedrequestmessageru", prompts.botPromptsLanguages.passedrequestmessageru, "botPromptsLanguages")}
 
                     <h2>Telegram configs</h2>
-                    {promptDisplay('Allowed Groups(must be separated with comma and space):', "allowedgroups", prompts.programmingVariables.allowedgroups, "allowedgroups")}
+                    {promptDisplay('Allowed Groups(must be separated with comma and space):', "allowedgroups", prompts.programmingVariables.allowedgroups, "programmingVariables")}
 
                     <button style={{
                         width: '500px',
