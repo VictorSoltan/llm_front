@@ -74,6 +74,29 @@ export default function UserMessages() {
         })
     }
 
+    const blockUser = (user_id) => {
+        axios.post(process.env.REACT_APP_BACK_ADDRESS + `/block_user_id${user_id}`)
+        .then(res => {
+            console.log(res)
+            getUsers()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    const unBlockUser = (user_id) => {
+        axios.post(process.env.REACT_APP_BACK_ADDRESS + `/unblock_user_id${user_id}`)
+        .then(res => {
+            console.log(res)
+            getUsers()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+
         const itemsPerPage = 20;
         // Here we use item offsets; we could also use page offsets
         // following the API or data you're working with.
@@ -153,7 +176,19 @@ export default function UserMessages() {
                                     borderRadius: '10px',
                                     borderWidth: '0px',
                                     backgroundColor: '#f44336',
-                                    color: 'white'}} onClick={() => deleteUser(user.user_id) }>Delete user</button>                                    
+                                    color: 'white'}} onClick={() => deleteUser(user.user_id) }>Delete user</button>   
+                                <button 
+                                    style={{
+                                        cursor: 'pointer',                     
+                                        fontSize: '13px',
+                                        marginTop: '6px',
+                                        padding: '6px',
+                                        fontWeight: 'bold',
+                                        borderRadius: '10px',
+                                        borderWidth: '0px',
+                                        backgroundColor: '#4CAF50',
+                                        color: 'white'}}
+                                    onClick={() => !user.blocked ? blockUser(user.user_id) :  unBlockUser(user.user_id)}>{!user.blocked ? 'Block user' : 'Unblock user'}</button>
                             </div>
                         )
                     })}

@@ -19,23 +19,38 @@ export default function ConfigEditor() {
     const updatePrompts = (e) => {
         e.preventDefault();
         const requestData = {
-            systemRole: e.target.systemrole.value,
-            servicesAbout: e.target.servicesabout.value,
-            goodbyeAfter3minutesOfWaiting: e.target.goodbyeafter3minutesofwaiting.value,
+            
+            systemRole: e.target.systemRole.value,
+            basicSystemRoleAfterManagersContact: e.target.basicSystemRoleAfterManagersContact.value,
+            servicesAbout: e.target.servicesAbout.value,
+            goodbyeAfter3minutesOfWaiting: e.target.goodbyeAfter3minutesOfWaiting.value,
             checkPublicMessage: e.target.checkpublicmessage.value,
+            exchangingPairs: e.target.exchangingPairs.value,
+            beforeMakeDeal: e.target.beforeMakeDeal.value,
+            toMakeADeal: e.target.toMakeADeal.value,
+            afterDeal: e.target.afterDeal.value,
+            currencyValues: e.target.currencyValues.value,
+            summaryPassInfo: e.target.summaryPassInfo.value,
+            summaryPassInfoForUser: e.target.summaryPassInfoForUser.value,
+            summaryPassQuestion: e.target.summaryPassQuestion.value,
+            summaryPassQuestionForUser: e.target.summaryPassQuestionForUser.value,
+            summaryPassSum: e.target.summaryPassSum.value,
+            summaryPassSumForUser: e.target.summaryPassSumForUser.value,
+            summaryPassUser: e.target.summaryPassUser.value,
+            summaryPassUserForUser: e.target.summaryPassUserForUser.value,
+            summaryPassManagers: e.target.summaryPassManagers.value,
+            summaryPassManagersForUser: e.target.summaryPassManagersForUser.value,
 
-            privateMessagesGptReminder: e.target.privatemessagesgptreminder.value,
-            afterConversetionPassedToAdmins: e.target.afterconversetionpassedtoadmins.value,
-            conversationSummery: e.target.conversationsummery.value,
-            currencyValues: e.target.currencyvalues.value,
-            currencyPairs: e.target.currencypairs.value,
-            greetingsEn: e.target.greetingsen.value,
-            greetingsRu: e.target.greetingsru.value,
-            messageAfterItWasPassedEn: e.target.passedrequestmessageen.value,
-            messageAfterItWasPassedRu: e.target.passedrequestmessageru.value,
+            greetingsEn: e.target.greetingsEn.value,
+            greetingsRu: e.target.greetingsRu.value,
 
-            allowedGroups: e.target.allowedgroups.value,
-
+            allowedGroups: e.target.allowedGroups.value,
+            messagesCount: Number(e.target.messagesCount.value),
+            messagesCountInDeal: Number(e.target.messagesCountInDeal.value),
+            timeAfterUserCanSpeakAfterMessagesLimit: Number(e.target.timeAfterUserCanSpeakAfterMessagesLimit.value),
+            timeAfterUserCanMakeNewDeal: Number(e.target.timeAfterUserCanMakeNewDeal.value),
+            timeAfterUserCanContactManagersAgain: Number(e.target.timeAfterUserCanContactManagersAgain.value),
+            timeAfterUserCanSpeakAfterInappropriateBehavior: Number(e.target.timeAfterUserCanSpeakAfterInappropriateBehavior.value)
         };
         console.log(requestData);
         axios
@@ -71,7 +86,6 @@ export default function ConfigEditor() {
        ) 
     }  
 
-
     return (
         <div
         style={{
@@ -94,26 +108,44 @@ export default function ConfigEditor() {
                         marginLeft: '2%'
                     }}>
                     <h2>Config params</h2>
-                    {promptDisplay('System Role:', "systemrole", prompts.botPrompts.systemrole, "botPrompts")}
-                    {promptDisplay('Services About:', "servicesabout", prompts.botPrompts.servicesabout, "botPrompts")}
-                    {promptDisplay('Goodbye After 3 Minutes Of Waiting:', "goodbyeafter3minutesofwaiting", prompts.botPrompts.goodbyeafter3minutesofwaiting, "botPrompts")}
-                    {promptDisplay('Check Public Message:', "checkpublicmessage", prompts.botPrompts.checkpublicmessage, "botPrompts")}
-                    {promptDisplay('Private Message GPT Reminder:', "privatemessagesgptreminder", prompts.botPrompts.privatemessagesgptreminder, "botPrompts")}
-                    {promptDisplay('Private Message GPT Reminder one hour after sending message:', "afterconversetionpassedtoadmins", prompts.botPrompts.afterconversetionpassedtoadmins, "botPrompts")}
-                    {promptDisplay('Conversation Summery:', "conversationsummery", prompts.botPrompts.conversationsummery, "botPrompts")}
-                    {promptDisplay('Amounts to compare with user requests(must be separated with comma and space):', "currencyvalues", prompts.botPrompts.currencyvalues, "botPrompts")}
-                    {promptDisplay('currency Pairs:', "currencypairs", prompts.botPrompts.currencypairs, "botPrompts")}
+                    {promptDisplay('System Role:', "systemRole", prompts.botPrompts.systemRole, "botPrompts")}
+                    {promptDisplay('System Role After Managers Contact:', "basicSystemRoleAfterManagersContact", prompts.botPrompts.basicSystemRoleAfterManagersContact, "botPrompts")}
+                    {promptDisplay('Services About:', "servicesAbout", prompts.botPrompts.servicesAbout, "botPrompts")}
+                    {promptDisplay('Goodbye After 3 Minutes Of Waiting:', "goodbyeAfter3minutesOfWaiting", prompts.botPrompts.goodbyeAfter3minutesOfWaiting, "botPrompts")}
+                    
+                    <h2>Bot prompts</h2>
+                    {promptDisplay('Check Public Message:', "checkpublicmessage", prompts.botPrompts.checkPublicMessage, "botPrompts")}
+                    {promptDisplay('Exchanging Pairs:', "exchangingPairs", prompts.botPrompts.exchangingPairs, "botPrompts")}
+                    {promptDisplay('Before Make Deal:', "beforeMakeDeal", prompts.botPrompts.beforeMakeDeal, "botPrompts")}
+                    {promptDisplay('To Make A Deal:', "toMakeADeal", prompts.botPrompts.toMakeADeal, "botPrompts")}
+                    {promptDisplay('After Deal:', "afterDeal", prompts.botPrompts.afterDeal, "botPrompts")}
+                    {promptDisplay('Currency Values:', "currencyValues", prompts.botPrompts.currencyValues, "botPrompts")}
+                    {promptDisplay('Summary Pass Info:', "summaryPassInfo", prompts.botPrompts.summaryPassInfo, "botPrompts")}
+                    {promptDisplay('Summary Pass Info For User:', "summaryPassInfoForUser", prompts.botPrompts.summaryPassInfoForUser, "botPrompts")}
+                    {promptDisplay('Summary Pass Question:', "summaryPassQuestion", prompts.botPrompts.summaryPassQuestion, "botPrompts")}
+                    {promptDisplay('Summary Pass Question For User:', "summaryPassQuestionForUser", prompts.botPrompts.summaryPassQuestionForUser, "botPrompts")}
+                    {promptDisplay('Summary Pass Sum:', "summaryPassSum", prompts.botPrompts.summaryPassSum, "botPrompts")}
+                    {promptDisplay('Summary Pass Sum For User:', "summaryPassSumForUser", prompts.botPrompts.summaryPassSumForUser, "botPrompts")}
+                    {promptDisplay('Summary Pass User:', "summaryPassUser", prompts.botPrompts.summaryPassUser, "botPrompts")}
+                    {promptDisplay('Summary Pass User For User:', "summaryPassUserForUser", prompts.botPrompts.summaryPassUserForUser, "botPrompts")}
+                    {promptDisplay('Summary Pass Managers:', "summaryPassManagers", prompts.botPrompts.summaryPassManagers, "botPrompts")}
+                    {promptDisplay('Summary Pass Managers For User:', "summaryPassManagersForUser", prompts.botPrompts.summaryPassManagersForUser, "botPrompts")}
 
                     <h2>Languages</h2>
-
-                    {promptDisplay('Greeting En:', "greetingsen", prompts.botPromptsLanguages.greetingsen, "botPromptsLanguages")}
-                    {promptDisplay('Greeting Ru:', "greetingsru", prompts.botPromptsLanguages.greetingsru, "botPromptsLanguages")}
-                    {promptDisplay('Passed Request Message En:', "passedrequestmessageen", prompts.botPromptsLanguages.passedrequestmessageen, "botPromptsLanguages")}
-                    {promptDisplay('Passed Request Message Ru:', "passedrequestmessageru", prompts.botPromptsLanguages.passedrequestmessageru, "botPromptsLanguages")}
+                    {promptDisplay('Greetings En:', "greetingsEn", prompts.botPromptsLanguages.greetingsEn, "botPromptsLanguages")}
+                    {promptDisplay('Greetings Ru:', "greetingsRu", prompts.botPromptsLanguages.greetingsRu, "botPromptsLanguages")}
 
                     <h2>Telegram configs</h2>
-                    {promptDisplay('Allowed Groups(must be separated with comma and space):', "allowedgroups", prompts.programmingVariables.allowedgroups, "programmingVariables")}
 
+                    {promptDisplay('Allowed Groups:', "allowedGroups", prompts.programmingVariables.allowedGroups, "programmingVariables")}
+                    {promptDisplay('Messages Count:', "messagesCount", prompts.programmingVariables.messagesCount, "programmingVariables")}
+                    {promptDisplay('Messages Count In Deal:', "messagesCountInDeal", prompts.programmingVariables.messagesCountInDeal, "programmingVariables")}
+                    {promptDisplay('Time After User Can Speak After Messages Limit:', "timeAfterUserCanSpeakAfterMessagesLimit", prompts.programmingVariables.timeAfterUserCanSpeakAfterMessagesLimit, "programmingVariables")}
+                    {promptDisplay('Time After User Can Make New Deal:', "timeAfterUserCanMakeNewDeal", prompts.programmingVariables.timeAfterUserCanMakeNewDeal, "programmingVariables")}
+                    {promptDisplay('Time After User Can Contact Managers Again:', "timeAfterUserCanContactManagersAgain", prompts.programmingVariables.timeAfterUserCanContactManagersAgain, "programmingVariables")}
+                    {promptDisplay('Time After User Can Speak After Inappropriate Behavior:', "timeAfterUserCanSpeakAfterInappropriateBehavior", prompts.programmingVariables.timeAfterUserCanSpeakAfterInappropriateBehavior, "programmingVariables")}
+                    
+                    
                     <button style={{
                         width: '500px',
                         marginTop: '30px',
