@@ -9,28 +9,27 @@ import UserMessages from './pages/userMessages';
 
 // import Button from 'react-bootstrap/Button';
 
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 
 function App() {
   const links = [
-    { value: "Config", link: "" },
+    { value: "Config", link: "/" },
     { value: "FAQ", link: "/faq_editor" },
     { value: "Messages", link: "/user_messages" },
     { value: "Upload sessions", link: "/upload_sessions" },
-  ]
-
+  ],
+  location = useLocation();
+  
   return (
     <div className="App">
       <header style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
         padding: "0 20px",
-        height: "60px",
         backgroundColor: "#fff",
         boxShadow: "0 0 10px rgba(0,0,0,0.5)",
       }}>
-        <h3>LLM admin panel</h3>
+        <div className='max-w-[1920px] flex justify-between items-center w-full h-[60px] m-auto'>
+
+        <h3 className='text-xl font-medium'>LLM admin panel</h3>
         <div style={{
           display: "flex",
           justifyContent: "space-between",
@@ -40,12 +39,15 @@ function App() {
             <Link
               key={index}
               to={item.link}
+              className={location.pathname === item.link ? "text-[#4065ca] border-b-2 border-blue-200 pt-[2px]" : ""}
               style={{ font: "400 16px/24px 'e-Ukraine', sans-serif", margin: '0 4px' }}
             >
               {item.value}
             </Link>
           ))}
         </div>
+        </div>
+
       </header>
       <Routes>
         <Route
