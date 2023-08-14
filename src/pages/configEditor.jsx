@@ -78,6 +78,7 @@ export default function ConfigEditor() {
             beforeMakeDeal: e.target.beforeMakeDeal.value,
             toMakeADeal: e.target.toMakeADeal.value,
             afterDeal: e.target.afterDeal.value,
+            currencyValues: e.target.currencyValues.value,
             summaryPassInfo: e.target.summaryPassInfo.value,
             summaryPassInfoForUser: e.target.summaryPassInfoForUser.value,
             summaryPassQuestion: e.target.summaryPassQuestion.value,
