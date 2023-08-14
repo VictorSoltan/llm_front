@@ -23,12 +23,20 @@ export default function FaqEditor() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (e.target.question.value === "" || e.target.answer.value === "") {
+      alert("Please fill out both fields");
+      return;
+    }
     axios
       .post(process.env.REACT_APP_BACK_ADDRESS + "/add_question/", {
         question: e.target.question.value,
         answer: e.target.answer.value,
       })
       .then((res) => {
+        alert("Question added");
+
+        e.target.question.value = "";
+        e.target.answer.value = "";
         console.log(res);
         getQuestions();
       })
@@ -36,12 +44,6 @@ export default function FaqEditor() {
         console.log(err);
       });
   };
-
-  // const changeQuestion = (e, index) => {
-  //     const newQuestions = [...questions]
-  //     newQuestions[index].question = e.target.value
-  //     setQuestions(newQuestions)
-  // }
 
   const changeAnswer = (e, index) => {
     const newQuestions = [...questions];
@@ -56,6 +58,7 @@ export default function FaqEditor() {
         answer: questions[index].answer,
       })
       .then((res) => {
+        alert("Question updated");
         console.log(res);
         getQuestions();
       })
@@ -71,6 +74,7 @@ export default function FaqEditor() {
         answer: questions[index].answer,
       })
       .then((res) => {
+        alert("Question deleted");
         console.log(res);
         getQuestions();
       })
@@ -179,7 +183,7 @@ export default function FaqEditor() {
             margin: "15px auto 10px",
           }}
         >
-          Submit
+          Add FAQ
         </button>
       </form>
     </div>
